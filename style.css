@@ -56,14 +56,47 @@ form {
 
   border-bottom: 1px solid var(--color-base-gray-100);
   padding-bottom: 3.2rem;
+
+  counter-reset: step; /* Cria uma variável/contador para os números nos steps! */
 }
 
 .step-progress strong {
   display: flex;
   align-items: center;
   gap: 0.8rem;
+  color: var(--color-base-gray-200);
+}
+
+.step-progress strong.active {
+  color: var(--color-base-gray-400);
 }
 
 .step-progress strong::before {
-  content: "1";
+  counter-increment: step; /* Graças ao "counter-reset", add 1 à contagem do elemento */
+  content: counter(step); /* Imprime a contagem do elemento */
+  font-family: 'Titillium Web';
+  font-size: 1.4rem;
+
+  background-color: var(--color-base-gray-100);
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%; /* Bizú para arredondar! */
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--color-base-gray-200);
+}
+
+.step-progress .active::before {
+  background-color: var(--color-produto-purple-mid);
+  color: var(--color-base-white);
+}
+
+.step-progress .done::before {
+  content: "✓";
+  background-color: var(--color-feedback-sucess-color);
+  
 }
