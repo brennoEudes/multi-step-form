@@ -10,13 +10,24 @@
     <!--Podemos regular as variações de peso da fonte direto no link acima. Ex: 400;700-->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Multi Step Form</title>
+    <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <main>
-        Teste
+    <main id="app">
+      <form>
+        <div id="step-progress">
+          <strong class="active">Contato</strong>
+          <!--Modo inicial: ativo-->
+          <img src="./assets/step-vector.png" alt="vector-step" />
+          <strong>Empresa</strong>
+          <img src="./assets/step-vector.png" alt="vector-step" />
+          <strong>Projeto</strong>
+        </div>
+
+        <div id="form-step-active"></div>
+      </form>
     </main>
+    <script src="./script.js"></script>
   </body>
 </html>
-
-
