@@ -37,16 +37,23 @@ button {
 
 body {
   height: 100vh;
+
+  /* Alinhamento ao centro da vh */
   display: grid;
   place-content: center;
 }
 
 form {
-  
   padding: 3.2rem;
   border: 1px solid var(--color-base-gray-100);
   border-radius: 0.6rem;
+}
+
+.step-progress {
+  display: flex;
+  align-items: center;
   gap: 4rem;
+
   border-bottom: 1px solid var(--color-base-gray-100);
   padding-bottom: 3.2rem;
 }
