@@ -1,0 +1,32 @@
+* {
+  /* reset universal*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Usar o plugin do Figma "Colors to variables" que importa todo o root pronto.
+Após o importe, alterar as "/" por "-" */
+:root {
+  --color-base-white: #ffffff;
+  --color-base-gray-100: #e1e1e6;
+  --color-base-gray-200: #8c8c99;
+  --color-base-gray-300: #7c7c8a;
+  --color-base-gray-400: #323238;
+  --color-feedback-sucess-color: #1d8841;
+  --color-produto-purple-light: #8257e5;
+  --color-produto-purple-mid: #633bbc;
+
+  font-size: 62.5%; /* Redefinição para que 1rem = 10px. 
+  Facilita o cálculo para a criação dos próximos elementos com font-size */
+}
+
+/* Todos os componentes recebem a msm fonte */
+html,
+body,
+input,
+textarea,
+button {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 1.6rem;
+}
