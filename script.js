@@ -19,8 +19,11 @@ form.addEventListener("click", (e) => {
   // exemplo object literal
   const actions = {
     next() {
-      if(!isValidInputs()) // só aceita se os inputs forem válidos!
-      return;
+      if (!isValidInputs()) {
+        /* IMPORTANTE: só aceita se os inputs forem válidos! */
+        return;
+      }
+      currentStep++;
     },
     prev() {
       currentStep--;
@@ -40,9 +43,8 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const data = new FormData(form);
-  alert(`Obrigado ${data.get('name')}!`);
+  alert(`Obrigado ${data.get("name")}!`);
 });
-
 
 /* Update Steps */
 function updateActiveStep() {
@@ -77,7 +79,20 @@ function isValidInputs() {
   const currentFormStep = formSteps[currentStep];
   const formFields = [
     ...currentFormStep.querySelectorAll("input"),
-    ...currentFormStep.querySelectorAll("textarea")
+    ...currentFormStep.querySelectorAll("textarea"),
   ];
-  return formFields.every((input) => input.reportValidity()) // Verifica se há problema nos inputs. Se sim, retorna TRUE* (*dúvida)!
+  return formFields.every((input) => input.reportValidity()); // Verifica se há problema nos inputs. Se sim, retorna TRUE* (*dúvida)!
 }
+
+/* Animation */
+formSteps.forEach((formStep) => {
+  function addHide() {
+    /* Função para add ou esconder */
+    formStep.classList.add("hide");
+  }
+  formStep.addEventListener("animationend", () => {
+    /* Determina QUANDO a função será executada! */
+    addHide(); /* Todos os steps são escondidos... */
+    formSteps[currentStep].classList.remove('hide'); /*... exceto o form do momento! */
+  });
+});

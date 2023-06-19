@@ -47,6 +47,7 @@ form {
   padding: 3.2rem;
   border: 1px solid var(--color-base-gray-100);
   border-radius: 0.6rem;
+  overflow: hidden; /* efeito p/ q a transição não supere a largura do box do form */
 }
 
 .step-progress {
@@ -74,14 +75,13 @@ form {
 .step-progress strong::before {
   counter-increment: step; /* Graças ao "counter-reset", add 1 à contagem do elemento */
   content: counter(step); /* Imprime a contagem do elemento */
-  font-family: 'Titillium Web';
+  font-family: "Titillium Web";
   font-size: 1.4rem;
 
   background-color: var(--color-base-gray-100);
   width: 2.8rem;
   height: 2.8rem;
   border-radius: 50%; /* Bizú para arredondar! */
-
 
   display: flex;
   align-items: center;
@@ -98,7 +98,6 @@ form {
 .step-progress .done::before {
   content: "✓";
   background-color: var(--color-feedback-sucess-color);
-
 }
 
 .content {
@@ -135,7 +134,6 @@ form {
 
 .primary:hover {
   background-color: var(--color-produto-purple-light);
-
 }
 
 .secundary {
@@ -154,7 +152,8 @@ label {
   color: var(--color-base-gray-400);
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   margin-top: 4px;
 
@@ -171,10 +170,33 @@ textarea::placeholder {
 }
 
 .form-step {
-  display: none;
+  display: block;
 }
 
-/* Só aparece o que estará ativo */
+/* Animations */
+@keyframes appear {
+  0% {
+    /* Animação do ponto inicial */
+    scale: 0.7;
+    opacity: 0;
+  }
+}
+
 .form-step.active {
-  display: block;
+  animation: appear 200ms 100ms ease-in-out backwards;
+}
+
+@keyframes slideout {
+  100% {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+}
+
+.form-step {
+  animation: slideout 200ms ease-in-out forwards;
+}
+
+.hide {
+  display: none;
 }
