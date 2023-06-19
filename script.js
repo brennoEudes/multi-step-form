@@ -42,11 +42,29 @@ form.addEventListener("submit", (e) => {
 /* Update Steps */
 function updateActiveStep() {
   formSteps.forEach((step) => {
-    step.classList.remove(
-      "active"
-    ); /* remove classe "active" para cada step */
+    step.classList.remove("active"); /* remove classe "active" para cada step */
   });
-console.log(currentStep);
-  formSteps[currentStep].classList.add("active"); /* add classe "active" para cada step */
+  console.log(currentStep);
+  formSteps[currentStep].classList.add(
+    "active"
+  ); /* add classe "active" para cada step */
 }
-function updateProgressStep() {}
+
+const progressSteps = document.querySelectorAll(".step-progress [data-step]");
+function updateProgressStep() {
+  progressSteps.forEach((step, idx) => {
+    step.classList.remove("active");
+    step.classList.remove("done");
+
+    if (idx < currentStep + 1) { /* verifica se o índice é menor que o currentStep + 1 */
+      step.classList.add('active');
+    }
+
+    if (idx < currentStep) { /* verifica se o índice é menor que o currentStep */
+      step.classList.add('done');
+    }
+  })
+}
+
+/* Validation */
+
