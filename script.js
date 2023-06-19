@@ -30,7 +30,6 @@ form.addEventListener("click", (e) => {
   const action = e.target.dataset.action;
   actions[action]();
 
-  console.log(currentStep);
   updateActiveStep(); // atualiza os campos do form
   updateProgressStep(); // atualiza a barra de progresso
 });
@@ -41,5 +40,13 @@ form.addEventListener("submit", (e) => {
 });
 
 /* Update Steps */
-function updateActiveStep() {}
+function updateActiveStep() {
+  formSteps.forEach((step) => {
+    step.classList.remove(
+      "active"
+    ); /* remove classe "active" para cada step */
+  });
+console.log(currentStep);
+  formSteps[currentStep].classList.add("active"); /* add classe "active" para cada step */
+}
 function updateProgressStep() {}
