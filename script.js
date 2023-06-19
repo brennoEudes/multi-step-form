@@ -19,7 +19,8 @@ form.addEventListener("click", (e) => {
   // exemplo object literal
   const actions = {
     next() {
-      currentStep++;
+      if(!isValidInputs()) // só aceita se os inputs forem válidos!
+      return;
     },
     prev() {
       currentStep--;
@@ -34,17 +35,20 @@ form.addEventListener("click", (e) => {
   updateProgressStep(); // atualiza a barra de progresso
 });
 
-/* Envio do formulário */
+/* Send form */
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  const data = new FormData(form);
+  alert(`Obrigado ${data.get('name')}!`);
 });
+
 
 /* Update Steps */
 function updateActiveStep() {
   formSteps.forEach((step) => {
     step.classList.remove("active"); /* remove classe "active" para cada step */
   });
-  console.log(currentStep);
   formSteps[currentStep].classList.add(
     "active"
   ); /* add classe "active" para cada step */
@@ -56,15 +60,24 @@ function updateProgressStep() {
     step.classList.remove("active");
     step.classList.remove("done");
 
-    if (idx < currentStep + 1) { /* verifica se o índice é menor que o currentStep + 1 */
-      step.classList.add('active');
+    if (idx < currentStep + 1) {
+      /* verifica se o índice é menor que o currentStep + 1 */
+      step.classList.add("active");
     }
 
-    if (idx < currentStep) { /* verifica se o índice é menor que o currentStep */
-      step.classList.add('done');
+    if (idx < currentStep) {
+      /* verifica se o índice é menor que o currentStep */
+      step.classList.add("done");
     }
-  })
+  });
 }
 
 /* Validation */
-
+function isValidInputs() {
+  const currentFormStep = formSteps[currentStep];
+  const formFields = [
+    ...currentFormStep.querySelectorAll("input"),
+    ...currentFormStep.querySelectorAll("textarea")
+  ];
+  return formFields.every((input) => input.reportValidity()) // Verifica se há problema nos inputs. Se sim, retorna TRUE* (*dúvida)!
+}
