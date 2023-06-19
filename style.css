@@ -169,3 +169,12 @@ input::placeholder,
 textarea::placeholder {
   color: var(--color-base-gray-200);
 }
+
+.form-step {
+  display: none;
+}
+
+/* Só aparece o que estará ativo */
+.form-step.active {
+  display: block;
+}
