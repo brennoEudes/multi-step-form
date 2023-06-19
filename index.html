@@ -26,7 +26,7 @@
           <strong>Projeto</strong>
         </div>
 
-        <div class="form-step-active">
+        <div class="form-step active">
           <div class="content">
             <div class="input-wraper">
               <label for="name">Name</label>
@@ -56,7 +56,7 @@
               <input
                 id="email"
                 name="email"
-                type="text"
+                type="email"
                 placeholder="What is your best email?"
                 required
               />
@@ -64,8 +64,66 @@
           </div>
           <div class="button-wraper justify-end">
             <!--<button class="btn secundary">VOLTAR</button>-->
-            <button class="btn primary">CONTINUAR</button>
-            
+            <button class="btn primary" type="button">CONTINUE</button>
+          </div>
+        </div>
+
+        <!--2º form. Não começa ativo -->
+        <div class="form-step">
+          <div class="content">
+            <div class="input-wraper">
+              <label for="business-name">Company Name</label>
+              <input
+                id="business-name"
+                name="business-name"
+                type="text"
+                placeholder="What is the company name?"
+              />
+            </div>
+
+            <div class="input-wraper">
+              <label for="business-employees">Nº of Employees</label>
+              <input
+                id="business-employees"
+                name="business-employees"
+                type="number"
+                placeholder="What is the number of employees?"
+                onkeypress="return /\d/.test(event.key)"
+              />
+              <!--onkeypress insere uma função JS e recebe uma expressão regular, em que "\d" só retorna "true" para nºs!--->
+            </div>
+
+            <div class="input-wraper">
+              <label for="business-summary">Business Summary</label>
+              <textarea
+                id="business-summary"
+                name="business-summary"
+                placeholder="Tell about your business..."
+              ></textarea>
+            </div>
+          </div>
+          <div class="button-wraper">
+            <button class="btn secundary" type="button">BACK</button>
+            <button class="btn primary" type="button">CONTINUE</button>
+          </div>
+        </div>
+
+        <!--3º form. Não começa ativo -->
+        <div class="form-step">
+          <div class="content">
+            <div class="input-wraper">
+              <label for="business-objectives">Business Objectives</label>
+              <textarea
+                id="business-objectives"
+                name="business-objectives"
+                placeholder="Tell about your business objectives..."
+              ></textarea>
+            </div>
+          </div>
+          <div class="button-wraper">
+            <button class="btn secundary">BACK</button>
+            <button class="btn primary" type="submit">SEND</button>
+            <!--Type submit-->
           </div>
         </div>
       </form>
