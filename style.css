@@ -13,6 +13,7 @@
 Após o importe, alterar as "/" por "-" */
 :root {
   --color-base-white: #ffffff;
+  --bg-url: url(./assets/bg-mobile-dark-1080x1920.jpg);
   --color-base-gray-100: #e1e1e6;
   --color-base-gray-200: #8c8c99;
   --color-base-gray-300: #7c7c8a;
@@ -36,11 +37,11 @@ button {
 }
 
 body {
-  height: 100vh;
-
   /* Alinhamento ao centro da vh */
   display: grid;
   place-content: center;
+  background: var(--bg-url) no-repeat top center/cover;
+  height: 100vh;
 }
 
 form {
@@ -48,6 +49,7 @@ form {
   border: 1px solid var(--color-base-gray-100);
   border-radius: 0.6rem;
   overflow: hidden; /* efeito p/ q a transição não supere a largura do box do form */
+  background-color: white;
 }
 
 .step-progress {
